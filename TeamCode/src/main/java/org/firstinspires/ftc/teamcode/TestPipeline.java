@@ -41,14 +41,14 @@ public class TestPipeline {
 		// Step Blur0:
 		Mat blurInput = source0;
 		BlurType blurType = BlurType.get("Box Blur");
-		double blurRadius = 25.225225225225227;
+		double blurRadius = 25.0;
 		blur(blurInput, blurType, blurRadius, blurOutput);
 
 		// Step HSV_Threshold0:
 		Mat hsvThresholdInput = blurOutput;
-		double[] hsvThresholdHue = {14.568345323741006, 41.774744027303754};
-		double[] hsvThresholdSaturation = {100.89928057553956, 255.0};
-		double[] hsvThresholdValue = {162.81474820143885, 255.0};
+		double[] hsvThresholdHue = {14.0, 41.0};
+		double[] hsvThresholdSaturation = {100.0, 255.0};
+		double[] hsvThresholdValue = {162.0, 255.0};
 		hsvThreshold(hsvThresholdInput, hsvThresholdHue, hsvThresholdSaturation, hsvThresholdValue, hsvThresholdOutput);
 
 		// Step Find_Contours0:
