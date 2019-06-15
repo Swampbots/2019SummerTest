@@ -8,6 +8,7 @@ import java.util.Map;
 //import java.util.stream.Collectors;
 import java.util.HashMap;
 
+import org.corningrobotics.enderbots.endercv.OpenCVPipeline;
 import org.opencv.core.*;
 import org.opencv.core.Core.*;
 import org.opencv.features2d.FeatureDetector;
@@ -22,7 +23,7 @@ import org.opencv.objdetect.*;
 *
 * @author GRIP
 */
-public class PipelineSummer {
+public class PipelineSummer extends OpenCVPipeline {
 
 	//Outputs
 	private Mat blurOutput = new Mat();
@@ -30,14 +31,10 @@ public class PipelineSummer {
 	private ArrayList<MatOfPoint> findContoursOutput = new ArrayList<MatOfPoint>();
 	private ArrayList<MatOfPoint> filterContoursOutput = new ArrayList<MatOfPoint>();
 
-	static {
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-	}
-
 	/**
 	 * This is the primary method that runs the entire pipeline and updates the outputs.
 	 */
-	public void process(Mat source0) {
+	public Mat processFrame(Mat source0, Mat gray) {
 		// Step Blur0:
 		Mat blurInput = source0;
 		BlurType blurType = BlurType.get("Box Blur");
@@ -71,6 +68,8 @@ public class PipelineSummer {
 		double filterContoursMaxRatio = 1000;
 		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
 
+
+		return hsvThresholdInput;
 	}
 
 	/**
