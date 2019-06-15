@@ -12,9 +12,14 @@ public class TestPipeline extends OpMode {
 
     public void init() {
         vision.init(hardwareMap.appContext, CameraViewDisplay.getInstance(), 0);
+        vision.enable();
     }
 
     public void loop() {
 
+    }
+
+    public void stop() {
+        vision.disable();
     }
 }
