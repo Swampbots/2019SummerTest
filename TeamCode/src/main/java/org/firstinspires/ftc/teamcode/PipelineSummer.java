@@ -69,7 +69,7 @@ public class PipelineSummer extends OpenCVPipeline {
 		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
 
 
-		return hsvThresholdInput;
+		return hsvThresholdOutput;
 	}
 
 	/**
