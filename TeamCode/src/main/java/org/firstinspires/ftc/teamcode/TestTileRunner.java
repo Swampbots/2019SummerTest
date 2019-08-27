@@ -20,14 +20,31 @@ public class TestTileRunner extends OpMode {
         frDrive = hardwareMap.dcMotor.get("fr_drive");
 
     }
+
     public void loop(){
 
+
+        setLeftPower(0.2);
+        setRightPower(0.2);
 
         telemetry.addData("rlDrive power", rlDrive.getPower());
         telemetry.addData("rrDrive power", rrDrive.getPower());
         telemetry.addData("flDrive power", flDrive.getPower());
         telemetry.addData("frDrive power", frDrive.getPower());
         telemetry.update();
+    }
+
+    public void setLeftPower(double power){
+        rlDrive.setPower(power);
+        flDrive.setPower(power);
+
+    }
+
+    public void setRightPower(double power){
+        rrDrive.setPower(power);
+        frDrive.setPower(power);
+
+
     }
 
 }
