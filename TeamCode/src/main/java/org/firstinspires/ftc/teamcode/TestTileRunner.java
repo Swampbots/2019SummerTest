@@ -19,6 +19,8 @@ public class TestTileRunner extends OpMode {
         flDrive = hardwareMap.dcMotor.get("fl_drive");
         frDrive = hardwareMap.dcMotor.get("fr_drive");
 
+        frDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        rrDrive.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void loop(){
