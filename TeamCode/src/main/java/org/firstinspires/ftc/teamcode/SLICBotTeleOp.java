@@ -41,11 +41,12 @@ public class SLICBotTeleOp extends OpMode {
     }
 
     public void loop() {
-        frontLeft.setPower(gamepad1.left_stick_y * gamepad1.left_stick_y * gamepad1.left_stick_y);
-        frontRight.setPower(gamepad1.right_stick_y * gamepad1.right_stick_y * gamepad1.right_stick_y);
+        frontLeft.setPower(gamepad1.left_stick_y * 0.6);
+        frontRight.setPower(gamepad1.right_stick_y * 0.6);
 
-        rearLeft.setPower(gamepad1.left_stick_y * gamepad1.left_stick_y * gamepad1.left_stick_y);
-        rearRight.setPower(gamepad1.right_stick_y * gamepad1.right_stick_y * gamepad1.right_stick_y);
+        rearLeft.setPower(gamepad1.left_stick_y * 0.6);
+        rearRight.setPower(gamepad1.right_stick_y * 0.6); 
+
 
 
         telemetry.addData("Front Left power", frontLeft.getPower());
