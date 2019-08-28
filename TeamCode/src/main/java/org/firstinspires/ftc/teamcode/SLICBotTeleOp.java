@@ -12,6 +12,7 @@ public class SLICBotTeleOp extends OpMode {
     public DcMotor frontRight;
     public DcMotor rearLeft;
     public DcMotor rearRight;
+    public DcMotor lift;
 
     public final boolean BRAKE_ON_ZERO = true;
 
@@ -21,6 +22,8 @@ public class SLICBotTeleOp extends OpMode {
         rearLeft    = hardwareMap.dcMotor.get("rl_drive");
         rearRight   = hardwareMap.dcMotor.get("rr_drive");
 
+        lift        = hardwareMap.dcMotor.get("lift");
+
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         rearLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -29,11 +32,15 @@ public class SLICBotTeleOp extends OpMode {
             frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             rearLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             rearRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+            lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         } else {
             frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
             frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
             rearLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
             rearRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+
+            lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         }
 
         telemetry.addLine("Ready");
@@ -47,6 +54,7 @@ public class SLICBotTeleOp extends OpMode {
         rearLeft.setPower(gamepad1.left_stick_y * 0.6);
         rearRight.setPower(gamepad1.right_stick_y * 0.6); 
 
+        lift.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
 
 
         telemetry.addData("Front Left power", frontLeft.getPower());
