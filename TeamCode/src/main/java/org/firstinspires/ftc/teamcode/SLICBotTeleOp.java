@@ -71,12 +71,11 @@ public class SLICBotTeleOp extends OpMode {
 //        rearLeft.setPower(gamepad1.left_stick_y);
 //        rearRight.setPower(gamepad1.right_stick_y);
 
-        telemetry.addData("Front Left power", frontLeft.getPower());
-        telemetry.addData("Front Right power", frontRight.getPower());
-        telemetry.addLine();
-        telemetry.addData("Rear Left power", rearLeft.getPower());
-        telemetry.addData("Rear Right power", rearRight.getPower());
 //        lift.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
+
+
+        telemetry.addData("Drive power", drive);
+        telemetry.addData("Turn power", turn);
         telemetry.update();
     }
 
