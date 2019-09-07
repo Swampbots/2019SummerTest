@@ -50,7 +50,6 @@ public class SLICBotTeleOp extends OpMode {
     public void loop() {
 
 
-        lift.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
         double drive = gamepad1.left_trigger - gamepad1.right_trigger;
         double turn = gamepad1.left_stick_x * 3 / 4;
 
