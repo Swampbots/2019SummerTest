@@ -62,6 +62,7 @@ public class SLICBotTeleOp extends OpMode {
         telemetry.addLine();
         telemetry.addData("Rear Left power", rearLeft.getPower());
         telemetry.addData("Rear Right power", rearRight.getPower());
+//        lift.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
         telemetry.update();
     }
 }
