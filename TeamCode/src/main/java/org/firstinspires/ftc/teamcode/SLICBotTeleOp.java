@@ -14,6 +14,9 @@ public class SLICBotTeleOp extends OpMode {
     public DcMotor rearRight;
     public DcMotor lift;
 
+    public DcMotor intake1;
+    public DcMotor intake2;
+
     public final boolean BRAKE_ON_ZERO = true;
 
     public void init() {
@@ -24,8 +27,15 @@ public class SLICBotTeleOp extends OpMode {
 
         lift        = hardwareMap.dcMotor.get("lift");
 
+        intake1     = hardwareMap.dcMotor.get("intake1");
+        intake2     = hardwareMap.dcMotor.get("intake2");
+
+
+
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         rearLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        intake2.setDirection(DcMotorSimple.Direction.REVERSE);
 
         if(BRAKE_ON_ZERO) {
             frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -63,6 +73,14 @@ public class SLICBotTeleOp extends OpMode {
             setRightPower((drive + turn) * speedMod);
         }
 
+        if(gamepad1.a) {
+            setIntakePower(1.0);
+        } else if(gamepad1.b) {
+            setIntakePower(-1.0);
+        } else {
+            setIntakePower(0.0);
+        }
+
 
 
 //        frontLeft.setPower(gamepad1.left_stick_y);
@@ -88,5 +106,10 @@ public class SLICBotTeleOp extends OpMode {
     public void setRightPower(double power){
         rearRight.setPower(power);
         frontRight.setPower(power);
+    }
+
+    public void setIntakePower(double power) {
+        intake1.setPower(power);
+        intake2.setPower(power);
     }
 }
