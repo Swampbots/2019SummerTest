@@ -35,6 +35,8 @@ public class SLICBotTeleOp extends OpMode {
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         rearLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        lift.setDirection(DcMotorSimple.Direction.REVERSE);
+
         intake2.setDirection(DcMotorSimple.Direction.REVERSE);
 
         if(BRAKE_ON_ZERO) {
@@ -72,6 +74,8 @@ public class SLICBotTeleOp extends OpMode {
             setLeftPower((drive - turn) * speedMod);
             setRightPower((drive + turn) * speedMod);
         }
+
+        lift.setPower(gamepad1.right_stick_y);
 
         if(gamepad1.a) {
             setIntakePower(1.0);
