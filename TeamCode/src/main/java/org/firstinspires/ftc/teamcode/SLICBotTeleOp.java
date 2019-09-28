@@ -75,11 +75,11 @@ public class SLICBotTeleOp extends OpMode {
             setRightPower((drive + turn) * speedMod);
         }
 
-        lift.setPower(gamepad2.right_stick_y);
+        lift.setPower(gamepad1.right_stick_y + gamepad2.right_stick_y);
 
-        if(gamepad2.a) {
+        if(gamepad1.a || gamepad2.a) {
             setIntakePower(1.0);
-        } else if(gamepad2.b) {
+        } else if(gamepad1.b || gamepad2.b) {
             setIntakePower(-1.0);
         } else {
             setIntakePower(0.0);
@@ -101,13 +101,13 @@ public class SLICBotTeleOp extends OpMode {
         telemetry.update();
     }
 
-    public void setLeftPower(double power){
+    public void setLeftPower(double power) {
         rearLeft.setPower(power);
         frontLeft.setPower(power);
 
     }
 
-    public void setRightPower(double power){
+    public void setRightPower(double power) {
         rearRight.setPower(power);
         frontRight.setPower(power);
     }
