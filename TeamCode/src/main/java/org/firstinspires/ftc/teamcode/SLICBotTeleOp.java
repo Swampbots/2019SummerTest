@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "Driver Control", group = "TeleOp")
 public class SLICBotTeleOp extends OpMode {
@@ -17,6 +18,8 @@ public class SLICBotTeleOp extends OpMode {
     public DcMotor intake1;
     public DcMotor intake2;
 
+    public Servo gripper;
+
     public final boolean BRAKE_ON_ZERO = true;
 
     public void init() {
@@ -29,6 +32,8 @@ public class SLICBotTeleOp extends OpMode {
 
         intake1     = hardwareMap.dcMotor.get("intake1");
         intake2     = hardwareMap.dcMotor.get("intake2");
+
+        gripper     = hardwareMap.servo.get("gripper");
 
 
 
@@ -84,6 +89,9 @@ public class SLICBotTeleOp extends OpMode {
         } else {
             setIntakePower(0.0);
         }
+
+        if(gamepad2.y) gripper.setPosition(1.0);
+        else gripper.setPosition(0.0);
 
 
 
