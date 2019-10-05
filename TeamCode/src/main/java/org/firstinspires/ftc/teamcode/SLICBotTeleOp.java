@@ -20,6 +20,9 @@ public class SLICBotTeleOp extends OpMode {
 
 //    public Servo gripper;
 
+    public Servo deploy1;
+    public Servo deploy2;
+
     public final boolean BRAKE_ON_ZERO = true;
 
     public void init() {
@@ -34,6 +37,9 @@ public class SLICBotTeleOp extends OpMode {
         intake2     = hardwareMap.dcMotor.get("intake2");
 
 //        gripper     = hardwareMap.servo.get("gripper");
+
+        deploy1     = hardwareMap.servo.get("deploy1");
+        deploy2     = hardwareMap.servo.get("deploy2");
 
 
 
@@ -92,6 +98,12 @@ public class SLICBotTeleOp extends OpMode {
 
 //        if(gamepad2.y) gripper.setPosition(1.0);
 //        else gripper.setPosition(0.0);
+
+        if(gamepad1.x) deploy1.setPosition(1.0);
+        else deploy1.setPosition(0.0);
+
+        if(gamepad1.y) deploy2.setPosition(1.0);
+        else deploy2.setPosition(0.0);
 
 
 
